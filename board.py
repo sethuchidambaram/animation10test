@@ -13,10 +13,13 @@ class board:
             if i >= self.no / 2:
                 a.head = None
                 self.rows.append(a)
-
+                i += 1
             if a.head != None:
                 self.rows.append(a)
-            i += 1
+                i += 1
+
+    #        print("the  size of the list is", len(self.rows))
+    #        print("the value  of  I is", i)
 
     def boardprint(self):
         i = 0
