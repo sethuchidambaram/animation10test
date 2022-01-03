@@ -18,7 +18,6 @@ class row:
             else:
                 out = random.randint(1, 8-L)
                 L = L + out
-#            print("the value of S  and  L  and  out are",s,out,L)
             if random.randint(1,10) < 6:
                 self.row_insert(s,out)
 
@@ -55,17 +54,12 @@ class row:
         return self.row_len() < self.len
 
     def row_blockdelete1(self,pos):
-#        print("the value of position is",pos)
-#        print("the  function row_blockdelete1 has  been called")
         p=self.head
         while p !=None:
             if p.pos  == pos:
                 break
             else:
                 p=p.next
-#       print("I am  in ifelse  loop")
-#        if p != None:
-#        print("I am  in ifelse  loop")
         if p.pre == None and p.next == None:
             self.head=None
         elif  p.pre == None:

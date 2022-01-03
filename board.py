@@ -17,15 +17,10 @@ class board:
             if a.head != None:
                 self.rows.append(a)
                 i += 1
-
-    #        print("the  size of the list is", len(self.rows))
-    #        print("the value  of  I is", i)
-
     def boardprint(self):
         i = 0
         no = len(self.rows)
         while i < len(self.rows):
-            #            print("the  row  position is", i)
             self.rows[i].row_print()
             print()
             i += 1
@@ -39,22 +34,18 @@ class board:
     def dropblocks(self):
         i = 0
         L = len(self.rows)
-#       print("no of  rows in  dropblocks is",L)
         counter = 0
         while i < len(self.rows) - 1:
             a = self.rows[i + 1].head
             b = self.rows[i].head
             while a != None:
-#                print("pos and  length is", a.pos, a.size)
                 c = self.rows[i].row_blockaccept(a.pos, a.size)
                 if c == True:
                     counter += 1
-#                    print("the  function dropblocks  has been called")
                     self.rows[i].row_insert(a.pos, a.size)
                     self.rows[i + 1].row_blockdelete1(a.pos)
                 a = a.next
             i += 1
-
         return counter > 0
 
     def removefullrows(self):
@@ -62,7 +53,6 @@ class board:
         counter = 0
         no = len(self.rows)
         while i < len(self.rows):
-            #            print(i)
             if self.rows[i].row_isempty() == False:
                 self.boardrowdelete(i)
                 counter += 1
@@ -85,7 +75,7 @@ class board:
                     8:
                 break
         i=0
-        print("the value  of  head of the class is",a.head,a.row_len())
+#        print("the value  of  head of the class is",a.head,a.row_len())
         a.row_print()
         while i < self.no-1:
             if i == 0:
@@ -98,18 +88,25 @@ class board:
                 self.rows[i+1] = pre
                 pre=tmp
             i+=1
-#        self.insert(0,a)
 
-    def boardclearnewrow(self):
-        i=0
+    def boardclearnewrows(self):
+        i=1
         print("the function boardclearnewrow has  been called")
         while i < len(self.rows):
-            self.rows[i]=None
+            self.rows[i].head=None
             i+=1
 
-    # def boardnooffilledrows(self):
-    #     i=0
-    #     while self.rows[i] != None:
+    def boardnooffilledrows(self):
+        i=0
+        count=0
+        while i <  len(self.rows):
+            if self.rows[i].head != None:
+                count+=1
+            i+=1
+        print("the no of  filled  rows is",count)
+        return count
+
+
 
 
 
